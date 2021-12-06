@@ -30,6 +30,7 @@ class ContactController extends AbstractController
         $form = $this -> createForm(ContactType::class, $contact);
 
 
+
         return $this->renderForm('contact/index.html.twig', [
             'controller_name' => 'Contact',
             'city' => $city,

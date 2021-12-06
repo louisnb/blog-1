@@ -18,7 +18,11 @@
 
     {{ dump(contacts) }}
 
+
+    {{ form_start(form) }}
     {{ form(form) }}
+    <button method="post" type='submit'>Envoyer</button>
+    {{ form_end(form) }}
 
     <ul>
         {% for contact in contacts %}
