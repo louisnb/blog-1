@@ -19,14 +19,21 @@
     {{ dump(contacts) }}
 
 
-
+    <h2>Ajouter un nouveau contact</h2>
     {{ form(form) }}
 
+
+    <h2>Mes demandes de contact</h2>
     <ul>
         {% for contact in contacts %}
-        <li> La personne <strong>{{ contact.name }} {{ contact.lastName }}</strong> vous a demandé quelque chose</li>
+        <li> <a href="{{ path('contact', {'id': contact.id }) }}"> Demande de contact de  <strong>{{ contact.name }} {{ contact.lastName }}</strong> </a> </li>
         {%  endfor %}
     </ul>
+
+    {% if id is defined %}
+        <p>Le contact est  </p>
+    {% endif %}
+
 
 
 </div>

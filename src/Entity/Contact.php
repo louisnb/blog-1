@@ -40,6 +40,7 @@ class Contact
     private $Age;
 
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,4 +95,7 @@ class Contact
 
         return $this;
     }
+
+
+
 }
