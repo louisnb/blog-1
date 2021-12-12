@@ -30,6 +30,15 @@ class ContactController extends AbstractController
         $form = $this -> createForm(ContactType::class, $contact);
 
 
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+            return $this->redirectToRoute('contact');
+        }
+
 
         return $this->renderForm('contact/index.html.twig', [
             'controller_name' => 'Contact',

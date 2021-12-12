@@ -34,6 +34,11 @@ class Contact
      */
     private $lastName;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Age;
+
 
     public function getId(): ?int
     {
@@ -74,6 +79,18 @@ class Contact
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->Age;
+    }
+
+    public function setAge(int $Age): self
+    {
+        $this->Age = $Age;
 
         return $this;
     }
