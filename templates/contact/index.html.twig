@@ -9,29 +9,35 @@
 <div class="example-wrapper">
     <h1>Hello Contrôleur de {{ controller_name }}! ✅</h1>
 
-    <h2>Salut {{ name }}</h2>
-
-    {% if city is defined %}
-        <p>Vous êtes sur la ville de {{ city }}</p>
-    {% endif %}
 
 
-    {{ dump(contacts) }}
 
-
-    <h2>Ajouter un nouveau contact</h2>
-    {{ form(form) }}
-
-
-    <h2>Mes demandes de contact</h2>
+    <h2>Mes demandes de contact ({{ contacts | length }})</h2>
     <ul>
         {% for contact in contacts %}
-        <li> <a href="{{ path('contact', {'id': contact.id }) }}"> Demande de contact de  <strong>{{ contact.name }} {{ contact.lastName }}</strong> </a> </li>
+        <li> <a href="{{ path('contact', {'id': contact.id }) }}"> Demande de contact de  <strong>{{ contact.name }} {{ contact.firstName }}</strong> </a> </li>
         {%  endfor %}
     </ul>
 
-    {% if id is defined %}
-        <p>Le contact est  </p>
+
+    {% if contact is defined and contact is not empty%}
+        <h2>Mon contact actuel</h2>
+        <ul>
+            <li>Id: {{ contact.id }} </li>
+            <li>Nom: {{ contact.name }}</li>
+            <li>Prénom: {{ contact.firstName }}</li>
+            <li>Âge: {{ contact.age }}</li>
+            {% if  contact.newsletter == true  %}
+                <li>Newsletter: ok </li>
+            {% else %}
+                <li>Newsletter: non </li>
+            {% endif %}
+        </ul>
+
+    {% else %}
+    <h2>Ajouter un nouveau contact</h2>
+    {{ form(form) }}
+
     {% endif %}
 
 

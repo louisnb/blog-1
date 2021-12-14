@@ -29,15 +29,17 @@ class Contact
      */
     private $newsletter;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lastName;
+
 
     /**
      * @ORM\Column(type="integer")
      */
     private $Age;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Firstname;
 
 
 
@@ -72,17 +74,7 @@ class Contact
         return $this;
     }
 
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
 
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
 
     public function getAge(): ?int
     {
@@ -92,6 +84,18 @@ class Contact
     public function setAge(int $Age): self
     {
         $this->Age = $Age;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->Firstname;
+    }
+
+    public function setFirstname(string $Firstname): self
+    {
+        $this->Firstname = $Firstname;
 
         return $this;
     }

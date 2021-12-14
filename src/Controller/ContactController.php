@@ -20,18 +20,18 @@ class ContactController extends AbstractController
         $this->contactRepository = $contactRepository;
     }
     /**
-     * @Route("/contactez-nous/{city}", name="contact")
+     * @Route("/contactez-nous", name="contact")
      */
-    public function index(Request $request, $city = ""): Response
+    public function index(Request $request): Response
     {
         $name = $request->query->get('name');
 
 
         $contact = new Contact();
         $form = $this -> createForm(ContactType::class, $contact);
-
-
         $form->handleRequest($request);
+
+
         if ($form->isSubmitted() && $form->isValid())
         {
             $entityManager = $this->getDoctrine()->getManager();
@@ -43,7 +43,6 @@ class ContactController extends AbstractController
 
         return $this->renderForm('contact/index.html.twig', [
             'controller_name' => 'Contact',
-            'city' => $city,
             'name' => $name,
             'contacts' => $this->contactRepository->findAll(),
             'form' => $form,
@@ -60,9 +59,9 @@ class ContactController extends AbstractController
 
         $contact = new Contact();
         $form = $this -> createForm(ContactType::class, $contact);
-
-
         $form->handleRequest($request);
+
+
         if ($form->isSubmitted() && $form->isValid())
         {
             $entityManager = $this->getDoctrine()->getManager();
@@ -74,8 +73,7 @@ class ContactController extends AbstractController
 
         return $this->renderForm('contact/index.html.twig', [
             'controller_name' => 'Contact',
-            'id' => $id,
-            'name' => $name,
+            'contact' => $this->contactRepository->find($id),
             'contacts' => $this->contactRepository->findAll(),
             'form' => $form,
         ]);

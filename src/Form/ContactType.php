@@ -14,7 +14,7 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('lastName')
+            ->add('firstName')
             ->add('newsletter')
             ->add('age')
             ->add('Envoyer', SubmitType::class)
